@@ -1,0 +1,131 @@
+.nav {
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0 2px 6px rgb(240, 240, 240);
+}
+
+.nav1 {
+  max-width: 1200px;
+  margin:auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+
+.logo {
+  width: 160px;
+  height: 70px;
+  cursor: pointer;
+}
+
+.section {
+  display: flex;
+  gap: 30px;
+}
+
+.section a {
+  text-decoration: none;
+  color: #111;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.section a:hover {
+  color: #ff3f6c; 
+  border-bottom: 2px solid #ff3f6c;
+  padding-bottom: 4px;
+}
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #ccc;
+  padding: 12px 10px;
+  border-radius: 5px;
+}
+
+.search input {
+  border: none;
+  outline: none;
+  width: 400px;         
+  height: 30px;         
+  padding: 10px;        
+  font-size: 16px;     
+  box-sizing: border-box;
+}
+.search input::placeholder{
+  font-size: 1rem;
+  color: #ff3f6c;
+}
+
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 40px;            
+}
+
+
+.icon-box {
+  width: 60px;           
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;             
+  cursor: pointer;
+}
+
+
+.user-icon {
+  width: 22px;
+  height: 22px;
+  color: black;
+}
+
+
+.icon-box span {
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1;
+}
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+
+@media (max-width: 992px) {
+
+  .section {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 220px;
+    background: white;
+    flex-direction: column;
+    padding: 15px;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+
+  .section.open {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .search {
+    display: none;
+  }
+}
