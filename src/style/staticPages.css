@@ -1,0 +1,29 @@
+.static-page {
+  max-width: 900px;
+  margin: 80px auto 40px;
+  padding: 0 20px;
+  font-family: Arial, sans-serif;
+}
+
+.static-page h1 {
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+
+.static-page h2 {
+  margin-top: 25px;
+  font-size: 20px;
+}
+
+.static-page p {
+  line-height: 1.7;
+  color: #444;
+}
+
+.static-page ul {
+  padding-left: 20px;
+}
+
+.static-page li {
+  margin-bottom: 8px;
+}

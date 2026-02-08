@@ -1,0 +1,87 @@
+.account-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.account-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.account-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.account-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.label {
+  font-weight: 600;
+  color: #555;
+}
+
+.value {
+  color: #222;
+}
+
+.logout-btn {
+  margin-top: 25px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #ff3f6c;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #e7335d;
+}
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+}
+.input {
+  width: 60%;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+textarea.input {
+  resize: none;
+  height: 60px;
+}
+
+.edit-btn,
+.save-btn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background: #333;
+  color: #fff;
+}
+
+.save-btn {
+  background: #ff3f6c;
+  color: #fff;
+}
+
