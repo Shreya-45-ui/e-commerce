@@ -90,7 +90,7 @@ function Footer() {
             </a>
 
             <a
-              href="https://github.com"
+              href="https://github.com/Shreya-45-ui/e-commerce"
               target="_blank"
               rel="noopener noreferrer"
             >
