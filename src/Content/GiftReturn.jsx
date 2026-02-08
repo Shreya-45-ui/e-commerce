@@ -8,7 +8,7 @@ function GiftReturn() {
       <Navbar />
 
       <div className="gift-return-container">
-        {/* Gift Card Balance */}
+        
         <section className="gift-card-section">
           <h2>Check Gift Card Balance</h2>
           <p>Enter your gift card number to check the available balance.</p>
@@ -21,7 +21,6 @@ function GiftReturn() {
           <button className="gift-btn">Check Balance</button>
         </section>
 
-        {/* Return & Exchange */}
         <section className="return-section">
           <h2>Return & Exchange</h2>
           <p>

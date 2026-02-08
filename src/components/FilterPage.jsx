@@ -9,7 +9,7 @@ function FilterPage() {
   const location = useLocation();
   const { category, gender, minPrice, maxPrice } = location.state || {};
 
-  // Apply filters
+ 
   let filteredProducts = productsData;
 
   if (category) {
@@ -31,7 +31,7 @@ function FilterPage() {
 
   return (
     <div>
-      <Navbar /> {/* Optional: Navbar on FilterPage too */}
+      <Navbar /> 
 
       <div className="product-grid">
         {filteredProducts.length > 0 ? (

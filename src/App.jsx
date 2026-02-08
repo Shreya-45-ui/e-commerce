@@ -13,7 +13,7 @@ import BestSeller from "./pages/BestSeller";
 import Account from "./Content/Account";
 import HelpFAQ from "./Content/HelpFAQ";
 import TermsOfUse from "./Content/TermsOfUse";
-import StorePickup from "./Content/storePickup";
+import StorePickup from "./Content/StorePickup";
 import ShippingPolicy from "./Content/ShippingPolicy";
 import PrivacyPolicy from "./Content/PrivacyPolicy";
 import GiftReturn from "./Content/GiftReturn";

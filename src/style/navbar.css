@@ -241,12 +241,12 @@ position: fixed;
     gap: 8px;
   }
 
-  /* Hide menu links */
+  
   .section {
     display: none;
   }
 
-  /* Search shrinks, NOT icons */
+ 
   .search {
     max-width: 120px;
     padding: 4px 6px;
@@ -257,7 +257,7 @@ position: fixed;
     font-size: 12px;
   }
 
-  /* Icons ALWAYS visible */
+
   .user-icons {
     display: flex;
     gap: 10px;
@@ -285,7 +285,7 @@ position: fixed;
   }
 
   .search {
-    display: none;   /* hide search to save space */
+    display: none;  
   }
 
   .user-icons {

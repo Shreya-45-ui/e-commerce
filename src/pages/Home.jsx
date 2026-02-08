@@ -16,7 +16,7 @@ function Home() {
   const [randomProducts, setRandomProducts] = useState([]);
 
   useEffect(() => {
-    // Shuffle all products randomly
+    
     const shuffled = [...Product].sort(() => Math.random() - 0.5);
     setRandomProducts(shuffled);
   }, []);

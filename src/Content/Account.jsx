@@ -20,7 +20,7 @@ function Account() {
   }, []);
 
   const handleSave = () => {
-    // ✅ VALIDATION
+   
     if (!phone.trim() || !address.trim()) {
       alert("Please fill all fields before saving.");
       return;

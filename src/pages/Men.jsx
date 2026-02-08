@@ -6,7 +6,7 @@ import '../style/home.css'
 
 import "../style/men.css";
 import { useEffect, useState } from "react";
-import products from "../Data/Product.js"; // ✅ ONE product file
+import products from "../Data/Product.js"; 
 import Discount from "./Discount.jsx";
 import Footer from "../components/Footer.jsx";
 import { useNavigate } from "react-router-dom";
@@ -16,12 +16,12 @@ function Men() {
   const navigate = useNavigate();
   const [randomProducts, setRandomProducts] = useState([]);
 
-  // ✅ Filter MEN products
+ 
   const menProducts = products.filter(
     item => item.gender === "Men"
   );
 
-  // ✅ Random MEN products for New Arrivals
+ 
   useEffect(() => {
     const selected = [...menProducts]
       .sort(() => Math.random() - 0.5)
