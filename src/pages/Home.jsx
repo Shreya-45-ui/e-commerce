@@ -76,7 +76,7 @@ function Home() {
             <img src={item.image} alt={item.name} />
 
             <div className="product-info">
-              <h4 className="brand">{item.brand}</h4>
+              
               <p className="title">{item.name}</p>
               <span className="product-price">₹{item.price}</span>
             </div>

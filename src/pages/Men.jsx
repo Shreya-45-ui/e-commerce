@@ -88,10 +88,7 @@ function Men() {
 
               <button
                 className="add-cart-btn"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  navigate(`/product/${item.id}`);
-                }}
+                
               >
                 Add to Bag
               </button>

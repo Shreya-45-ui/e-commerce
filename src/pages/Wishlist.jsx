@@ -1,29 +1,39 @@
 import { useEffect, useState } from "react";
-import {
-  getWishlist,
-  removeFromWishlist
-} from "../Data/Wishlist";
+import { getWishlist, removeFromWishlist } from "../Data/Wishlist";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import '../style/wishlist.css'
+import { useNavigate } from "react-router-dom";
+
+import "../style/wishlist.css";
+
 function Wishlist() {
   const [wishlist, setWishlist] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user || !user.phone || !user.address) {
+      alert("Please complete your My Account profile first");
+      navigate("/account");
+      return;
+    }
+
     setWishlist(getWishlist());
-  }, []);
+  }, [navigate]);
 
   const refresh = () => setWishlist(getWishlist());
 
   return (
     <>
       <Navbar />
+
       <div className="wishlist-container">
         <h2>My Wishlist</h2>
 
         {wishlist.length === 0 && <p>No items in wishlist</p>}
 
-        {wishlist.map(item => (
+        {wishlist.map((item) => (
           <div key={item.id} className="wishlist-item">
             <img src={item.image} alt={item.name} />
             <h4>{item.name}</h4>
@@ -40,6 +50,7 @@ function Wishlist() {
           </div>
         ))}
       </div>
+
       <Footer />
     </>
   );

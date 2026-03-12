@@ -1,23 +1,22 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 import products from "../Data/Product";
-import { addToCart } from "../Data/Cart";
-import { addToWishlist } from "../Data/Wishlist";
+
 
 import "../style/card.css";
 
 function ProductDetail() {
   const { id } = useParams();
-   const navigate = useNavigate();
+  
 
-  // ✅ Find product safely (string/number)
+  
   const product = products.find((p) => p.id.toString() === id);
 
-  // Debugging
+ 
   console.log("URL id:", id);
   console.log("Product found:", product);
 
@@ -27,37 +26,48 @@ function ProductDetail() {
   const sizes = product.sizes || ["S", "M", "L", "XL"];
   const [selectedSize, setSelectedSize] = useState(sizes[0]);
 
- 
-  const handleAddToCart = () => {
-    if (!selectedSize) {
-      alert("Please select a size");
-      return;
+
+  const addToBag = (product) => {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const exist = cart.find(item => item.id === product.id);
+
+    if (!exist) {
+      cart.push({ ...product, quantity: 1 });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Added to Bag");
+    } else {
+      alert("Already in Bag");
     }
-    addToCart(product, selectedSize);
-    navigate("/bag")
-    
   };
 
-  
-  const handleWishlist = () => {
-    addToWishlist(product);
-    navigate("/wishlist")
-  };
 
+  const addToWishlist = (product) => {
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    const exist = wishlist.find(item => item.id === product.id);
+
+    if (!exist) {
+      wishlist.push(product);
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      alert("Added to Wishlist");
+    } else {
+      alert("Already in Wishlist");
+    }
+  };
   return (
     <>
-      <Navbar/>
+      <Navbar />
 
       <div className="product-details">
-       
+
         <div className="image-section">
           <img src={product.image} alt={product.name} loading="lazy" />
         </div>
 
-       
+
         <div className="info-section">
-          <h2>{product.brand || "Fashion Hub"}</h2>
-          <h3>{product.name}</h3>
+          <h2>{product.name}</h2>
 
           <div className="rating">⭐ {product.rating || 4.3} / 5</div>
 
@@ -76,28 +86,34 @@ function ProductDetail() {
             ))}
           </div>
 
-          <button className="add-to-bag" onClick={handleAddToCart}>
+          <button className="add-to-bag" onClick={(e) => {
+            e.stopPropagation();
+            addToBag(product);
+          }}>
             ADD TO BAG
           </button>
 
-          <button className="wishlist" onClick={handleWishlist}>
+          <button className="wishlist" onClick={(e) => {
+            e.stopPropagation();
+            addToWishlist(product);
+          }} >
             WISHLIST
           </button>
-<div className="product-desc">
-   <p className="desc-text"> This product is crafted with premium-quality fabric to provide superior comfort and durability. Perfect for casual wear, office use, and daily styling. </p> 
-   <ul className="desc-list"> 
-    <li>100% Premium Cotton Fabric</li> 
-    <li>Soft & breathable material</li> 
-    <li>Regular fit for everyday comfort</li>
-     <li>Machine wash, easy care</li> 
-     <li>Made in India</li>
-      </ul> 
-</div>
-          
+          <div className="product-desc">
+            <p className="desc-text"> This product is crafted with premium-quality fabric to provide superior comfort and durability. Perfect for casual wear, office use, and daily styling. </p>
+            <ul className="desc-list">
+              <li>100% Premium Cotton Fabric</li>
+              <li>Soft & breathable material</li>
+              <li>Regular fit for everyday comfort</li>
+              <li>Machine wash, easy care</li>
+              <li>Made in India</li>
+            </ul>
+          </div>
+
         </div>
       </div>
-      <Footer/>
-      
+      <Footer />
+
     </>
   );
 }

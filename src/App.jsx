@@ -24,6 +24,8 @@ import RiseRewards from "./Content/RiseReward";
 import Career from "./Content/Career";
 import Sustainability from "./Content/Sustainability";
 import FilterPage from "./components/FilterPage";
+import Checkout from "./Content/Checkout";
+import NotFound from "./pages/NotFound";
 
 
 
@@ -58,6 +60,8 @@ function App() {
         <Route path="/sustainability" element={<Sustainability/>} />
         <Route path="/career" element={<Career/>} />
         <Route path="/contact-us" element={<ContactUs/>} />
+        <Route path="/checkout" element={<Checkout/>} />
+        <Route path="/404" element={<NotFound/>} />
 
 
 

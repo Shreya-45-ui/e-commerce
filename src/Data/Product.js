@@ -15,6 +15,7 @@ const Product = [
             "id": 2,
             "gender": "Men",
             "name": "Denim Jacket",
+             "brand": "UrbanWear",
             "price": 1499,
             "rating": 4.3,
             "sizes": ["S", "M", "L", "XL"],

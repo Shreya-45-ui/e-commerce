@@ -12,7 +12,7 @@ function Navbar() {
   const [filterOpen, setFilterOpen] = useState(false);
   const [userName, setUserName] = useState("");
 
-  // Temp filter states
+  
   const [tempCategory, setTempCategory] = useState("");
   const [tempGender, setTempGender] = useState("");
   const [tempMinPrice, setTempMinPrice] = useState("");
@@ -40,13 +40,12 @@ function Navbar() {
   }, []);
 
   const logout = () => {
-    localStorage.removeItem("user");
-    setUserName("");
+    localStorage.removeItem("isLoggedIn"); 
     navigate("/");
   };
 
   const handleFilter = () => {
-    // Navigate to /filter with state
+    
     navigate("/filter", {
       state: {
         category: tempCategory,
@@ -75,7 +74,7 @@ function Navbar() {
           <NavLink to={"/women"}><span>WOMEN</span></NavLink>
           <NavLink to={"/kids"}><span>KIDS</span></NavLink>
           <NavLink to={"/best"}><span>BEST SELLER</span></NavLink>
-          <NavLink to={"/about"}><span>ABOUT US</span></NavLink>
+          <NavLink to={"/about"}><span>ABOUT</span></NavLink>
         </div>
 
         {/* Search */}
@@ -156,12 +155,14 @@ function Navbar() {
                 type="number"
                 placeholder="Min Price"
                 value={tempMinPrice}
+                min={0}
                 onChange={e => setTempMinPrice(e.target.value)}
               />
               <input
                 type="number"
                 placeholder="Max Price"
                 value={tempMaxPrice}
+                min={0}
                 onChange={e => setTempMaxPrice(e.target.value)}
               />
 

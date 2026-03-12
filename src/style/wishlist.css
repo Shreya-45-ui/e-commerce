@@ -180,7 +180,7 @@
   cursor: pointer;
   margin-top: 20px;
 }
-/* Responsive */
+
 @media (max-width: 768px) {
   .wishlist-item img {
     height: 220px;

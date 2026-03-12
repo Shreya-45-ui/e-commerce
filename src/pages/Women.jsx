@@ -15,9 +15,9 @@ function Women() {
   const navigate = useNavigate();
   const [randomProducts, setRandomProducts] = useState([]);
 
-  const womenProducts = products.filter(
-    item => item.gender === "Women"
-  );
+ const womenProducts = products.filter(
+  item => item.gender?.toLowerCase().includes("women")
+);
 
  
   useEffect(() => {
@@ -79,14 +79,16 @@ function Women() {
             <img src={item.image} alt={item.name} />
             <h3>{item.name}</h3>
             <span>₹{item.price}</span>
+            <button
+                className="add-cart-btn"
+              >
+                Add to Bag
+              </button>
           </div>
         ))}
       </div>
-
-      {/* Category Section */}
-      <ProductSection gender="Women" />
-
-      <Discount />
+      <ProductSection gender="women" />
+       <Discount />
 
       {/* ALL PRODUCTS */}
       <div className="pro">
