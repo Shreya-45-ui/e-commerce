@@ -10,7 +10,19 @@ import Discount from './Discount'
 import Footer from '../components/Footer'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+const addToBag = (product) => {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+    const exist = cart.find(item => item.id === product.id);
+
+    if (!exist) {
+      cart.push({ ...product, quantity: 1 });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Added to Bag");
+    } else {
+      alert("Already in Bag");
+    }
+  };
 function Home() {
   const navigate = useNavigate();
   const [randomProducts, setRandomProducts] = useState([]);
@@ -85,7 +97,7 @@ function Home() {
               className="add-cart-btn"
               onClick={(e) => {
                 e.stopPropagation();
-                navigate(`/product/${item.id}`);
+                addToBag(Product);
               }}
             >
               Add to Bag

@@ -4,6 +4,7 @@ import co from "../assets/men2.jpg";
 import cd from "../assets/men3.jpg";
 import '../style/home.css'
 
+
 import "../style/men.css";
 import { useEffect, useState } from "react";
 import products from "../Data/Product.js"; 
@@ -15,7 +16,19 @@ import ProductSection from "./ProductSection.jsx";
 function Men() {
   const navigate = useNavigate();
   const [randomProducts, setRandomProducts] = useState([]);
+const addToBag = (product) => {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+    const exist = cart.find(item => item.id === product.id);
+
+    if (!exist) {
+      cart.push({ ...product, quantity: 1 });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Added to Bag");
+    } else {
+      alert("Already in Bag");
+    }
+  };
  
   const menProducts = products.filter(
     item => item.gender === "Men"
@@ -86,12 +99,7 @@ function Men() {
                 <span className="product-price">₹{item.price}</span>
               </div>
 
-              <button
-                className="add-cart-btn"
-                
-              >
-                Add to Bag
-              </button>
+              
             </div>
           ))}
         </div>
@@ -101,7 +109,10 @@ function Men() {
       <Discount />
 
       {/* ALL MEN PRODUCTS */}
-      <div className="pro">
+      <div className="pro" onClick={(e) => {
+                  e.stopPropagation();
+                  navigate(`/product/${item.id}`);
+                }}>
         <h2 style={{ textAlign: "center", marginTop: "20px" }}>
           ALL PRODUCTS
         </h2>
@@ -116,7 +127,7 @@ function Men() {
               <img src={item.image} alt={item.name} />
 
               <div className="product-info">
-                <h4 className="brand">{item.brand}</h4>
+                
                 <p className="title">{item.name}</p>
                 <span className="product-price">₹{item.price}</span>
               </div>
@@ -124,9 +135,9 @@ function Men() {
               <button
                 className="add-cart-btn"
                 onClick={(e) => {
-                  e.stopPropagation();
-                  navigate(`/product/${item.id}`);
-                }}
+            e.stopPropagation();
+            addToBag(products);
+          }}
               >
                 Add to Bag
               </button>

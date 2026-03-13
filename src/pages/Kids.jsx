@@ -14,11 +14,20 @@ function Kids() {
   const navigate=useNavigate()
   const boys = products.filter(p => p.gender === "Boys");
   const girls = products.filter(p => p.gender === "Girls");
-   const handleAddToBag = (item) => {
-    addToCart(item);
-    navigate("/Bag")
-    
+   const addToBag = (product) => {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const exist = cart.find(item => item.id === product.id);
+
+    if (!exist) {
+      cart.push({ ...product, quantity: 1 });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Added to Bag");
+    } else {
+      alert("Already in Bag");
+    }
   };
+ 
 
     return(
         <>
@@ -65,13 +74,16 @@ function Kids() {
                <Discount/>
 
            <h2>Boys Collection</h2>
-      <div className="cls">
+      <div className="cls" >
         {boys.slice(0,20).map(item => (
-          <div className="ca" key={item.id}>
+          <div className="ca" key={item.id} onClick={() => navigate(`/product/${item.id}`)}>
             <img src={item.image} alt={item.name} />
             <h4>{item.name}</h4>
             <p>₹{item.price}</p>
-            <button onClick={() => handleAddToBag(item)}>
+            <button onClick={(e) => {
+                  e.stopPropagation();
+                 addToBag(products);
+                }}>
               Add to Bag
             </button>
           </div>
@@ -80,13 +92,16 @@ function Kids() {
       </div>
 
       <h2>Girls Collection</h2>
-      <div className="cls">
+      <div className="cls" >
         {girls.slice(0,20).map(item => (
-          <div className="ca" key={item.id}>
+          <div className="ca" key={item.id} onClick={() => navigate(`/product/${item.id}`)}>
             <img src={item.image} alt={item.name} />
             <h4>{item.name}</h4>
             <p>₹{item.price}</p>
-            <button onClick={() => handleAddToBag(item)}>
+            <button onClick={(e) => {
+                  e.stopPropagation();
+                 addToBag(products);
+                }}>
               Add to Bag
             </button>
           </div>

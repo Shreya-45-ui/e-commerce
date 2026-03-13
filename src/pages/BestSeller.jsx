@@ -12,6 +12,19 @@ function BestSeller() {
     const menProducts = products.filter(
     item => item.gender === "Men"
   );
+   const addToBag = (product) => {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const exist = cart.find(item => item.id === product.id);
+
+    if (!exist) {
+      cart.push({ ...product, quantity: 1 });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Added to Bag");
+    } else {
+      alert("Already in Bag");
+    }
+  };
   useEffect(() => {
       const selected = [...menProducts]
         .sort(() => Math.random() - 0.5)
@@ -66,7 +79,7 @@ function BestSeller() {
 
         <div className="product">
           {randomProducts.map(item => (
-            <div key={item.id} className="product-card">
+            <div key={item.id} className="product-card" onClick={() => navigate(`/product/${item.id}`)}>
               <img src={item.image} alt={item.name} />
 
               <div className="product-info">
@@ -79,7 +92,7 @@ function BestSeller() {
                 className="add-cart-btn"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate(`/product/${item.id}`);
+                 addToBag(products);
                 }}
               >
                 Add to Bag
@@ -94,7 +107,7 @@ function BestSeller() {
 
         <div className="product">
           {ranProducts.map(item => (
-            <div key={item.id} className="product-card">
+            <div key={item.id} className="product-card" onClick={() => navigate(`/product/${item.id}`)}> 
               <img src={item.image} alt={item.name} />
 
               <div className="product-info">
@@ -107,7 +120,7 @@ function BestSeller() {
                 className="add-cart-btn"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate(`/product/${item.id}`);
+                 addToBag(products);
                 }}
               >
                 Add to Bag
@@ -123,7 +136,7 @@ function BestSeller() {
 
         <div className="product">
           {boyProducts.map(item => (
-            <div key={item.id} className="product-card">
+            <div key={item.id} className="product-card" onClick={() => navigate(`/product/${item.id}`)}>
               <img src={item.image} alt={item.name} />
 
               <div className="product-info">
@@ -136,7 +149,7 @@ function BestSeller() {
                 className="add-cart-btn"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate(`/product/${item.id}`);
+                 addToBag(products);
                 }}
               >
                 Add to Bag
@@ -151,7 +164,7 @@ function BestSeller() {
 
         <div className="product">
           {girlProducts.map(item => (
-            <div key={item.id} className="product-card">
+            <div key={item.id} className="product-card" onClick={() => navigate(`/product/${item.id}`)}>
               <img src={item.image} alt={item.name} />
 
               <div className="product-info">
@@ -164,7 +177,7 @@ function BestSeller() {
                 className="add-cart-btn"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate(`/product/${item.id}`);
+                 addToBag(products);
                 }}
               >
                 Add to Bag

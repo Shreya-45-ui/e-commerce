@@ -18,7 +18,20 @@ function Women() {
  const womenProducts = products.filter(
   item => item.gender?.toLowerCase().includes("women")
 );
+ 
+   const addToBag = (product) => {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+    const exist = cart.find(item => item.id === product.id);
+
+    if (!exist) {
+      cart.push({ ...product, quantity: 1 });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Added to Bag");
+    } else {
+      alert("Already in Bag");
+    }
+  };
  
   useEffect(() => {
     const selected = [...womenProducts]
@@ -96,7 +109,7 @@ function Women() {
           ALL PRODUCTS
         </h2>
 
-        <div className="product2">
+        <div className="product2" onClick={() => navigate(`/product/${item.id}`)}>
           {womenProducts.slice(0, 60).map(item => (
             <div
               key={item.id}
@@ -115,7 +128,7 @@ function Women() {
                 className="add-cart-btn"
                 onClick={(e) => {
                   e.stopPropagation();
-                  navigate(`/product/${item.id}`);
+                 addToBag(products);
                 }}
               >
                 Add to Bag

@@ -13,14 +13,8 @@ function Wishlist() {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
 
-    if (!user || !user.phone || !user.address) {
-      alert("Please complete your My Account profile first");
-      navigate("/account");
-      return;
-    }
-
     setWishlist(getWishlist());
-  }, [navigate]);
+  });
 
   const refresh = () => setWishlist(getWishlist());
 
